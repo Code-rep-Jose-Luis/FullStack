@@ -102,13 +102,31 @@ public class HolaMundo {
 		
 	}
 	
+	public static void tablasVerdad() {
+		int edad = 25;
+		int anyosCarnet = 6;
+		String sexo = "Masculino";
+		String nombre = "Pepe";
+		boolean esPepeMayor = edad >=18 && nombre.equals("Pepe"); // true
+		System.out.println(esPepeMayor); // true
+
+		boolean tieneDescuento = (sexo.equals("Masculino") && anyosCarnet > 10) || (sexo.equals("Femenino") && anyosCarnet > 5); // false || false
+		System.out.println(tieneDescuento); // false
+	
+		boolean estoQueDa = sexo.equals("Masculino") || anyosCarnet > 5 && nombre.equals("Fran");
+		System.out.println(estoQueDa); // true
+		
+		estoQueDa = (sexo.equals("Masculino") || anyosCarnet > 5) && nombre.equals("Fran");
+		System.out.println(estoQueDa); // false
+	}
+	
 	public static void main(String[] args) {
 		
 		ejemplosComentarios();
 		ejemplosTipos();
 		ejemplosString();
 		ejemplosBoolean();
-		
+		tablasVerdad();
 	}
 
 }
