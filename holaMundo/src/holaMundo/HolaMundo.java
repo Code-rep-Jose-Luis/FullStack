@@ -65,9 +65,40 @@ public class HolaMundo {
 		System.out.println("Otra cosa"); // println pone un salto de linea al imprimir
 		System.out.printf("%s tiene %d años\n",cadena1,numero); // imprimir con formato
 		// String int = "numero"; hay palabras reservadas que no pueden usarse como nombre de variable
-		String String = "String"; // Asignar una variable con String no es buena practica
-		String = "hola";
+		// String String = "String"; // Asignar una variable con String no es buena practica
+		//String = "hola";
 		String mundo;
+		
+	}
+	
+	public static void ejemplosBoolean() {
+		boolean verdad = true;
+		boolean falso = false;
+		System.out.println(10<20); // true
+		boolean comparacion1 = 10<18; // true
+		System.out.println(comparacion1); // true
+		boolean C1 = 10<20; // 10 menor a 20 // true
+		boolean C2 = 10>20; // 10 mayor a 20 // false
+		boolean C3 = 10<=20; // 10 menor o igual a 20 // true
+		boolean C4 = 10>=20; // 10 menor o igual a 20 // false
+		boolean C5 = 10==20; // 10 igual a 20 // false
+		boolean C6 = 10!=20; // 10 distinto a 20 // true
+		String cadena1 = "hola";
+		String cadena2 = "adios";
+		String cadena3 = "hola";
+		String cadena4 = "Hola";
+		System.out.println(cadena1.equals(cadena2)); // False
+		System.out.println(cadena1.equals(cadena3)); // true
+		System.out.println(cadena1.equals(cadena4)); // false
+		boolean cadenasIguales = cadena1.equals(cadena2); // false
+		int numero1=5;
+		double numero3 = 5.0;
+		double numero4 = 5.1;
+		System.out.println(numero1==numero3); // true
+		System.out.println(numero1==numero4); // false
+		System.out.println((11/2)==numero1); // true si se divide entre enteros el resultado omite los decimales
+		System.out.println((11.0/2)==numero1); // false al poner decimal a un numero se combierte en double y ya considera los decimales al dividir
+		System.out.println((23%4)); 
 		
 	}
 	
@@ -76,6 +107,7 @@ public class HolaMundo {
 		ejemplosComentarios();
 		ejemplosTipos();
 		ejemplosString();
+		ejemplosBoolean();
 		
 	}
 
