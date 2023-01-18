@@ -41,7 +41,12 @@ public class HolaMundo {
 		int largo4 =Integer.MAX_VALUE;
 		System.out.println("int max: "+ (largo4));
 		System.out.println("int max+1: "+ (largo4+1));
-		
+		// Caracteres
+		char letraA = 'a';
+		char letraB = 'b';
+		System.out.println("La suma de a + b es:"+ letraA + letraB);
+		System.out.println("La suma de a + b es:"+ (letraA + letraB));
+		System.out.println("La suma de a + b es:"+ (char)(letraA+3));
 		
 	}
 	
