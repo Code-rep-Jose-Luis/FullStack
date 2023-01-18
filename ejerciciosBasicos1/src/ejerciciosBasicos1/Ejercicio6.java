@@ -37,8 +37,27 @@ public class Ejercicio6 {
 		System.out.println("D toma el valor de B -> D = "+D);
 
 	}
+	public static void operaciones2() {
+		int A = 1;
+		int B = 2;
+		int C = 3;
+		int D = 4;
+		int auxB=B;
+
+		System.out.println("Valores iniciales A = "+A+",B = "+B+",C = "+C+",D = "+D);
+		B=C;
+		System.out.println("B toma el valor de C -> B = "+B);
+		C=A;
+		System.out.println("C toma el valor de A -> C = "+C);
+		A=D;
+		System.out.println("A toma el valor de D -> A = "+A);
+		D=auxB;
+		System.out.println("D toma el valor de B -> D = "+D);
+		
+	}
 	
 	public static void main(String[] args) {
 		operaciones();
+		operaciones2();
 	}
 }
