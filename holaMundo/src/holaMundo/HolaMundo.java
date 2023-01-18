@@ -120,6 +120,23 @@ public class HolaMundo {
 		System.out.println(estoQueDa); // false
 	}
 	
+	public static void ejemplosIncrementosDecrementos() {
+		int numero = 10;
+		++numero;
+		System.out.println(numero);
+		--numero;
+		System.out.println(numero);
+		System.out.println(numero);
+
+		numero++;
+		System.out.println(numero);
+		numero--;
+		System.out.println(numero);
+		
+		System.out.println(numero+" "+(numero++)+" "+numero+" "+(numero--)+" "+numero);
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		ejemplosComentarios();
@@ -127,6 +144,7 @@ public class HolaMundo {
 		ejemplosString();
 		ejemplosBoolean();
 		tablasVerdad();
+		ejemplosIncrementosDecrementos();
 	}
 
 }
