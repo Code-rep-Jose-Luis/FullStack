@@ -50,10 +50,33 @@ public class HolaMundo {
 		
 	}
 	
+	public static void ejemplosString() {
+		String cadena1;
+		cadena1 = "Jose";
+		String cadena2 = "Hola", cadena3 = "adios"; // Por buena practica declarar 1 variable por fila
+		String cadena4 = cadena2 + cadena1; // "HolaJose"
+		String cadena5 = cadena2 + " " + cadena1; // "Hola Jose"
+		String prefijo = "34";
+		String telefono = "666666666";
+		int numero = 40;
+		System.out.println(prefijo + "-" + telefono);
+		System.out.println("Otra cosa"); // println pone un salto de linea al imprimir
+		System.out.print(prefijo + "-" + telefono); // imprime en la linea, si se vuelve a imprimir, saldra a continuacion
+		System.out.println("Otra cosa"); // println pone un salto de linea al imprimir
+		System.out.printf("%s tiene %d años\n",cadena1,numero); // imprimir con formato
+		// String int = "numero"; hay palabras reservadas que no pueden usarse como nombre de variable
+		String String = "String"; // Asignar una variable con String no es buena practica
+		String = "hola";
+		String mundo;
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		ejemplosComentarios();
 		ejemplosTipos();
+		ejemplosString();
+		
 	}
 
 }
