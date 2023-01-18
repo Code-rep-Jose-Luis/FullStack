@@ -1,8 +1,9 @@
 package holaMundo;
 
-/*
+/**
  * @autor 
  */
+
 public class HolaMundo {
 
 	public static void ejemplosComentarios() {
@@ -137,6 +138,31 @@ public class HolaMundo {
 		
 	}
 	
+	public static void ejemplosConstantes() {
+		final double IVA = 0.21;
+		double precioVaquero = 50;
+		System.out.println("El precio final es : "+ (precioVaquero * (1+IVA)));
+
+	}
+	
+	public static void conversionesNumerosCadenas() {
+		int numero = 10;
+		String cadena = "11";
+		System.out.println(cadena+numero); // 1110
+		// Convertir la cadena a número Integer.parse
+		System.out.println(Integer.parseInt(cadena)+numero); // 21
+		
+		int prefijo = 34;
+		int telefono = 666666666;
+		System.out.println(prefijo+telefono); // 666666700
+		System.out.println(""+prefijo+telefono); // 34666666666
+		System.out.println(Integer.toString(prefijo)+telefono); // 34666666666
+		System.out.println(String.valueOf(prefijo)+telefono); // 34666666666
+		System.out.println("00"+prefijo+"-"+telefono); // 0034-666666666
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		ejemplosComentarios();
@@ -145,6 +171,8 @@ public class HolaMundo {
 		ejemplosBoolean();
 		tablasVerdad();
 		ejemplosIncrementosDecrementos();
+		ejemplosConstantes();
+		conversionesNumerosCadenas();
 	}
 
 }
