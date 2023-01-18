@@ -1,5 +1,9 @@
 package ejerciciosBasicos1;
 
+/*
+ *  1. Crea un programa que diga el resultado de sumar 36 y 27.
+ */
+
 public class Ejercicio1 {
 
 	private static void suma() {
