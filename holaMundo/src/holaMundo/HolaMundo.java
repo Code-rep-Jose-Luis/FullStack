@@ -1,5 +1,7 @@
 package holaMundo;
 
+import java.util.Scanner;
+
 /**
  * @autor 
  */
@@ -190,10 +192,42 @@ public class HolaMundo {
 		System.out.println("--------------------------");
 		System.out.printf("%12s%14f€\n",fran,salario1);
 		System.out.printf("%12s%14f€\n",consuelo,salario2);
+		// Formatea a la izquerda y redondea
 		System.out.printf("%-12s%14.2f€\n",fran,salario1);
 		System.out.printf("%-12s%14.2f€\n",consuelo,salario2);
 		
+	}
+	
+	public static void ejemplosScanner() { // Leer de la consola
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introdzca el nombre:");
+		String nombre = sc.nextLine();
+		System.out.println("Introdzca su localidad:");
+		String localidad = sc.nextLine();
+		System.out.println("Introdzca su salario:");
+		double salario = sc.nextDouble();
+		sc.nextLine();
+		System.out.println("Introdzca su salario deseado:");
+		double salarioDeseado = sc.nextDouble();
+		System.out.println("Hola "+nombre+" me encanta "+localidad+" y que useted gane"+salario+" y que quieres ganar "+salarioDeseado);
 		
+		sc.close();
+	}
+	public static void ejemplosScanner2() { // Leer de la consola
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introdzca el nombre:");
+		String nombre = sc.nextLine();
+		System.out.println("Introdzca su localidad:");
+		String localidad = sc.nextLine();
+		System.out.println("Introdzca su salario:");
+		double salario = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		System.out.println("Introdzca su salario deseado:");
+		double salarioDeseado = Double.parseDouble(sc.next().replace(',', '.'));
+		sc.nextLine();
+		System.out.println("Hola "+nombre+" me encanta "+localidad+" y que useted gane"+salario+" y que quieres ganar "+salarioDeseado);
+		
+		sc.close();
 	}
 	
 	public static void main(String[] args) {
@@ -208,6 +242,8 @@ public class HolaMundo {
 		ejemplosSaltos();
 		ejemplosFormateo();
 		ejemplosFormateo2();
+		//ejemplosScanner();
+		ejemplosScanner2();
 		
 	}
 
