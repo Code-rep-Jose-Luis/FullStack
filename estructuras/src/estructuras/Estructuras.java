@@ -88,15 +88,31 @@ public class Estructuras {
 		}
 		sc.close();
 		
-		
-		
-		
+	}
+	
+	public static void IfElseIfSinElse() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduce tu equipo preferido");
+		String equipo = sc.nextLine();
+		String equipoMayusculas = equipo.toUpperCase(); // pasa la cadena a mayúscula y le asigna el valor a otra nueva
+														// variable
+
+		if (equipo.toLowerCase().equals("barcelona")) { // Pasa a minúscula y compara
+			System.out.println("Visca el Barsa!");
+		} else if (equipo.toUpperCase().equals("MADRID")) { // Pasa a mayúscula y compara
+			System.out.println("Hala Madrid!");
+		} else if (equipo.equalsIgnoreCase("atletico")) { // Compara sin tener en cuenta mayúsculas ni minúsculas
+			System.out.println("Aupa Atleti!");
+		}
+		System.out.println("Bienvenido a nuestro programa de fútbol");
+		sc.close();
 	}
 	
 	public static void main(String[] args) {
 		//ejemploIf();
 		//ejemploIfElse();
 		//ejemploIfElseIfElse();
+		//IfElseIfSinElse();
 		ejemploSwitch();
 	}
 
