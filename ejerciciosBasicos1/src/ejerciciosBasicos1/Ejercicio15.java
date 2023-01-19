@@ -13,28 +13,27 @@ public class Ejercicio15 {
 		final double IVA = 0.21;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introdzca el nombre del primer producto:");
-		String nombre = sc.nextLine();
+		String nombre1 = sc.nextLine();
 		System.out.println("Introdzca el precio del primer producto:");
-		double precio = Double.parseDouble(sc.next().replace(',', '.'));
+		double precio1 = Double.parseDouble(sc.next().replace(',', '.'));
 		sc.nextLine();
-		double precioIva=precio*(1+IVA);
-		System.out.printf("%15s%12s%12s\n","NOMBRE","PRECIO","CON IVA");
-		System.out.println("--------------------------");
-		System.out.printf("%-12s%12.2f€%14.2f€\n",nombre,precio,precioIva);
+		
 		System.out.println("Introdzca el nombre del segundo producto::");
-		nombre = sc.nextLine();
+		String nombre2 = sc.nextLine();
 		System.out.println("Introdzca el precio del segundo producto:");
-		precio = Double.parseDouble(sc.next().replace(',', '.'));
+		double precio2 = Double.parseDouble(sc.next().replace(',', '.'));
 		sc.nextLine();
-		precioIva=precio*(1+IVA);
-		System.out.printf("%-12s%12.2f€%14.2f€\n",nombre,precio,precioIva);
+		
 		System.out.println("Introdzca el nombre del tercer producto::");
-		nombre = sc.nextLine();
+		String nombre3 = sc.nextLine();
 		System.out.println("Introdzca el precio del tercer producto:");
-		precio = Double.parseDouble(sc.next().replace(',', '.'));
+		double precio3 = Double.parseDouble(sc.next().replace(',', '.'));
 		sc.nextLine();
-		precioIva=precio*(1+IVA);
-		System.out.printf("%-12s%12.2f€%14.2f€\n",nombre,precio,precioIva);
+		
+		System.out.printf("%-15s%12s%12s\n","NOMBRE","PRECIO","CON IVA");
+		System.out.printf("%-15s%11.2f€%13.2f€\n",nombre1,precio1,precio1*(1+IVA));
+		System.out.printf("%-15s%11.2f€%13.2f€\n",nombre2,precio2,precio2*(1+IVA));
+		System.out.printf("%-15s%11.2f€%13.2f€\n",nombre3,precio3,precio3*(1+IVA));
 		sc.close();
 		
 
