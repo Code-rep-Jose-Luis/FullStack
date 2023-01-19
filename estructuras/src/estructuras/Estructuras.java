@@ -53,13 +53,51 @@ public class Estructuras {
 			System.out.println("El numero no es una cara del dado");			
 		}
 		sc.close();
+		
+		
+		
+		
+	}
+	
+	public static void ejemploSwitch() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Introduzca el numero del dado: ");
+		int numero = sc.nextInt();
+		switch(numero) {
+		case 1:
+			System.out.println(numero);
+			break;
+		case 2:
+			System.out.println(numero);
+			break;
+		case 3:
+			System.out.println(numero);
+			break;
+		case 4:
+			System.out.println(numero);
+			break;
+		case 5:
+			System.out.println(numero);
+			break;
+		case 6:
+			System.out.println(numero);
+			break;
+		default:
+			System.out.println("El numero no es una cara del dado");			
+			break;
+		}
+		sc.close();
+		
+		
+		
+		
 	}
 	
 	public static void main(String[] args) {
 		//ejemploIf();
 		//ejemploIfElse();
-		ejemploIfElseIfElse();
-
+		//ejemploIfElseIfElse();
+		ejemploSwitch();
 	}
 
 }
