@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class Ejercicio15 {
 
-//	public static void lista() {
-//		Scanner sc = new Scanner(System.in);
-//		
-//	}
 	
 	public static void lista() { // Leer de la consola
 		final double IVA = 0.21;
