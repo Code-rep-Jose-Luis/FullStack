@@ -151,7 +151,7 @@ public class HolaMundo {
 		System.out.println(cadena+numero); // 1110
 		// Convertir la cadena a número Integer.parse
 		System.out.println(Integer.parseInt(cadena)+numero); // 21
-		
+		// Convertir numero a cadena
 		int prefijo = 34;
 		int telefono = 666666666;
 		System.out.println(prefijo+telefono); // 666666700
@@ -160,11 +160,43 @@ public class HolaMundo {
 		System.out.println(String.valueOf(prefijo)+telefono); // 34666666666
 		System.out.println("00"+prefijo+"-"+telefono); // 0034-666666666
 		
+	}
+	
+	public static void ejemplosSaltos() {
+		System.out.println("Hola\nFran\nBien?");
+		System.out.println("Elige una opción");
+		System.out.println("\t1) Añadir producto");
+		System.out.println("\t2) Borrar producto");
+		
+	}
+	
+	public static void ejemplosFormateo() {
+		String fran = "Fran";
+		String consuelo = "Consuelo";
+		double salario1 = 95567.89;
+		double salario2 = 2589.3674;
+		System.out.println("\tNombre\tSalario");
+		System.out.println("------------------------");
+		System.out.println("\t"+fran+"\t"+salario1);
+		System.out.println("\t"+consuelo+"\t"+salario2);
+
+	}
+	public static void ejemplosFormateo2() {
+		String fran = "Fran";
+		String consuelo = "Consuelo";
+		double salario1 = 95567.89;
+		double salario2 = 2589.3674;
+		System.out.printf("%12s%14s\n","NOMBRE","SALARIO");
+		System.out.println("--------------------------");
+		System.out.printf("%12s%14f€\n",fran,salario1);
+		System.out.printf("%12s%14f€\n",consuelo,salario2);
+		System.out.printf("%-12s%14.2f€\n",fran,salario1);
+		System.out.printf("%-12s%14.2f€\n",consuelo,salario2);
+		
 		
 	}
 	
 	public static void main(String[] args) {
-		
 		ejemplosComentarios();
 		ejemplosTipos();
 		ejemplosString();
@@ -173,6 +205,10 @@ public class HolaMundo {
 		ejemplosIncrementosDecrementos();
 		ejemplosConstantes();
 		conversionesNumerosCadenas();
+		ejemplosSaltos();
+		ejemplosFormateo();
+		ejemplosFormateo2();
+		
 	}
 
 }
