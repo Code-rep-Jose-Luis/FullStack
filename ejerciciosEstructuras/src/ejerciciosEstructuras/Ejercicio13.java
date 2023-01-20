@@ -14,8 +14,8 @@ public class Ejercicio13 {
 	public static void operacion(){
 		int numero = 20;
 		while(numero>0) {
-			System.out.println(numero);
-			numero--;
+			System.out.println(numero--);
+			;
 		}
 		
 		System.out.println("----");	
