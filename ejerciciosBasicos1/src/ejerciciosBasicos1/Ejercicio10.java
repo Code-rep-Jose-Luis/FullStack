@@ -14,7 +14,7 @@ public class Ejercicio10 {
 		System.out.println("Introduce un numero");
 		int numero = Integer.parseInt(sc.nextLine());
 		System.out.println("El numero elegido es :"+numero+" su doble es : "+numero*2+" y su triple es : "+numero*3);
-		
+		sc.close();
 	}
 	
 	public static void main(String[] args) {

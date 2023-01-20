@@ -13,7 +13,7 @@ public class Ejercicio9 {
 		System.out.println("Indique su nombre: ");
 		String nombre = sc.nextLine();
 		System.out.println("Bienvenido "+nombre);
-		
+		sc.close();
 		
 		
 
