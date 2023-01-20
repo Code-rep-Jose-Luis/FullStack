@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Estructuras {
 
+	public static final double IVA = 0.21;
+	
 	public static void ejemploIf() {
 		//String nombre = "Jose";
 		Scanner sc = new Scanner(System.in);
@@ -118,6 +120,16 @@ public class Estructuras {
 
 		System.out.println(edad>=18?"Eres mayor de edad":"Eres menor de edad");
 		
+	}
+	
+	public static void ejemploAmbitosVariables() {
+		int numero = 5;
+		int edad = 18;
+		if(edad>=18) {
+			int valor = 4;
+			System.out.println(valor); // valor desaparece al salir del if
+		}
+
 	}
 	
 	public static void main(String[] args) {
