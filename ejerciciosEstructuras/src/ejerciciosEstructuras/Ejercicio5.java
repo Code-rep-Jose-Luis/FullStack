@@ -16,11 +16,13 @@ public class Ejercicio5 {
 	public static void operacion() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce el primer numero: ");
-		double numero1 = Double.parseDouble(sc.nextLine());
+		double numerador = Double.parseDouble(sc.nextLine());
 		System.out.println("Introduce el segundo numero: ");
-		double numero2 = Double.parseDouble(sc.nextLine());
+		double divisor = Double.parseDouble(sc.nextLine());
 		
-		System.out.println((numero1!=0 && numero2!=0)?"La division de "+numero1+" entre "+numero2+" = "+numero1/numero2:"No se puede calcular");
+		System.out.println((divisor!=0)?"La division de "+numerador+" entre "+numerador+" = "+numerador/divisor:"No se puede calcular");
+
+		//System.out.println((numerador!=0 && divisor!=0)?"La division de "+numerador+" entre "+divisor+" = "+numerador/divisor:"No se puede calcular");
 		
 		sc.close();
 	}
