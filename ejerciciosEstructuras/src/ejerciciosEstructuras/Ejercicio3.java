@@ -15,6 +15,10 @@ public class Ejercicio3 {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce 1 texto: ");
 		char letra = sc.nextLine().charAt(0);
+		
+		// Opcion solo para mayusculas
+		System.out.println((letra>='A' && letra<='Z')?letra+" es una letra mayuscula":letra+" no es un caracter valido");
+		// Opcion para mayusculas y minusculas
 		System.out.println(((int)letra>=97 && (int)letra<=122)?letra+" es una letra minuscula":((int)letra>=65 && (int)letra<=90)?letra+" es una letra mayuscula":letra+" no es un caracter valido");
 		sc.close();
 	}
