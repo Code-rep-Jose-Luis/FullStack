@@ -151,16 +151,16 @@ public class Estructuras {
 	public static void ejemploWhile2() {
 		Scanner sc = new Scanner(System.in);
 		String password = "1234";
-		int intentos = 3;
+		int intentos = 0;
 		boolean adivina = false;
-			while(!adivina && intentos>0) {
+			while(!adivina && intentos<3) {
 				intentos--;
 				System.out.println("Introduzca la contraseña: ");
 				String respuesta = sc.nextLine();
 				if (respuesta.equals(password)) {
 					adivina=true;
 				} else {
-					System.out.println("Fallaste la contraseña!\nNumero de intentos restantes "+intentos+"\n");				
+					System.out.println("Fallaste la contraseña!\nNumero de intentos restantes: "+(3-intentos)+"\n");				
 				}	
 			}
 			System.out.println(adivina?"Acertaste!":"No has acertado la contraseña");
