@@ -15,20 +15,23 @@ import java.util.Scanner;
 public class Ejercicio12 {
 
 	public static void operacion() {
+		final double MENOR_EDAD= 0.25;
+		final double SOCIO= 0.40;
+		final double JUVILADO= 0.75;
 		double precio = 50;
 		System.out.println("Introduce tu edad");
 		Scanner sc = new Scanner(System.in);
 		int edad = sc.nextInt();
 		sc.nextLine();
 		if (edad<18) {
-			precio*=0.75;
+			precio*=1-MENOR_EDAD;
 		}else if(edad>=65) {
-			precio*=0.25;
+			precio*=1-JUVILADO;
 		}else {
 			System.out.println("Eres socio?");
 			String respuesta = sc.nextLine();
-			if(respuesta.toLowerCase()=="si") {
-				precio*=0.4;
+			if(respuesta.toLowerCase().equals("si")) {
+				precio*=1-SOCIO;
 			}
 		}
 		System.out.println("Precio de la entrada "+precio);
