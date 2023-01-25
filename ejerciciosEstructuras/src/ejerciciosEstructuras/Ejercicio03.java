@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Utiliza cadena.charAt(0) para acceder al primer carácter recibido.
  */
 
-public class Ejercicio3 {
+public class Ejercicio03 {
 
 	public static void operacion() {
 		Scanner sc = new Scanner(System.in);

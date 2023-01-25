@@ -7,7 +7,7 @@ import java.util.Scanner;
  * división entre 10 da 0).
  */
 
-public class Ejercicio2 {
+public class Ejercicio02 {
 	
 	public static void operacion() {
 		Scanner sc =new Scanner(System.in);

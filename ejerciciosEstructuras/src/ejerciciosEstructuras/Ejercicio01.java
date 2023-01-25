@@ -6,7 +6,7 @@ package ejerciciosEstructuras;
  *
  * 1.Crear un programa que me diga si un numero es par o impar
  */
-public class Ejercicio1 {
+public class Ejercicio01 {
 
 	public static void operacione() {
 		int numero = 8;

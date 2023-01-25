@@ -11,7 +11,7 @@ import java.util.Scanner;
  * el segundo. Se debe comprobar que el divisor no puede ser cero.
  *
  */
-public class Ejercicio5 {
+public class Ejercicio05 {
 
 	public static void operacion() {
 		Scanner sc = new Scanner(System.in);
