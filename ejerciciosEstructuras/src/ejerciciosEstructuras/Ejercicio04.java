@@ -2,7 +2,7 @@ package ejerciciosEstructuras;
 
 import java.util.Scanner;
 
-/*
+/**
  * 4. Programa que le pida 2 cadenas de texto al usuario y compruebe si son iguales.
  */
 

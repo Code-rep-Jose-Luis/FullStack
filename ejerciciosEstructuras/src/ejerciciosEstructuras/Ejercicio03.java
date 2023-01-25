@@ -2,7 +2,7 @@ package ejerciciosEstructuras;
 
 import java.util.Scanner;
 
-/*
+/**
  * 3. Programa que lea un carácter por teclado y compruebe si es una letra mayúscula. Una letra mayúscula
  * es aquella que está entre la ‘A’ y la ‘Z’. Recuerda que se pueden comparar los caracteres como si
  * fueran números.

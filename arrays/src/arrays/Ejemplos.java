@@ -66,6 +66,31 @@ public class Ejemplos {
 
 	public static void ejemploRedimension() {
 		String[] nombres = { "Juan", "Ana", "Pedro", "Eva", "Paco" };
+		nombres = Arrays.copyOf(nombres, 10);
+		Arrays.stream(nombres).forEach(e->System.out.println(e));
+		System.out.println(String.join(", ", nombres));
+		
+		for (String nombre : nombres) {
+			System.out.println(nombre);
+			
+		}
+		
+	}
+	public static void ejemploOrden() {
+		String[] nombres = { "Juan", "Ana", "Pedro", "Eva", "Paco" };
+//		nombres = Arrays.copyOf(nombres, 10);
+		Arrays.stream(nombres).forEach(e->System.out.println(e));
+		System.out.println(String.join(", ", nombres));
+		Arrays.sort(nombres);
+		for (String nombre : nombres) {
+			System.out.println(nombre);
+			
+		}
+
+		
+	}
+	public static void ejemploOrdenInverso() {
+		String[] nombres = { "Juan", "Ana", "Pedro", "Eva", "Paco" };
 //		nombres = Arrays.copyOf(nombres, 10);
 		Arrays.stream(nombres).forEach(e->System.out.println(e));
 		System.out.println(String.join(", ", nombres));
