@@ -21,6 +21,8 @@ public class EjercicioBucles6_1_4 {
 		
 		sc.close();
 	}
+	
+	
 	public static void main(String[] args) {
 		operaciones();
 
