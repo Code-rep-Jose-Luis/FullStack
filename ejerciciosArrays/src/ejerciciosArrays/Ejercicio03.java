@@ -25,7 +25,6 @@ public class Ejercicio03 {
 				System.out.println(numero);
 			}
 		}
-		
 		System.out.println("La media es "+media);
 		sc.close();
 	}
