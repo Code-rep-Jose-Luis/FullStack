@@ -1,0 +1,96 @@
+package poo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Ejemplos {
+
+	public static void ejemplosCoches() {
+		Coche coche=new Coche(); // Coche sin datos
+		coche.setNumeroRuedas(4);
+		coche.setMarca("Seat");
+		coche.setModelo("Altea");
+		coche.setPrecio(2000);
+		System.out.println(coche);
+		Coche coche2=new Coche(-6,"Honda","3","023-MAH",5000);
+		System.out.println(coche2);
+		
+		System.out.println("Mi coche es un "+coche.getMarca()+ " "+ coche.getModelo());
+	
+	}
+	
+	public static void ejercicio1() {
+		Jugador jugador1=new Jugador();
+		jugador1.setNombre("Luis");
+		jugador1.setEdad(16);
+		jugador1.setSueldo(2000);
+		
+		
+		Jugador jugador2=new Jugador("Pepe",-18,-1000);
+		
+		System.out.println(jugador1);
+		System.out.println(jugador2);
+	}
+	
+public static void ejemploListaJugadores() {
+		
+		// Creo una lista vacía para almacenar los jugadores
+		List<Jugador> jugadores = new ArrayList<Jugador>();
+		
+		Jugador fran = new Jugador("Fran", 45, 50000);
+		Jugador david = new Jugador("David", 20, 60000);
+		Jugador barbara = new Jugador("Bárbara", 23, 70000);
+		Jugador camila = new Jugador("Camila", 22, 80000);
+		Jugador joseLuis = new Jugador("José Luis", 18, 60000);
+		Jugador enrique = new Jugador("Enrique", 15, 50000);
+		Jugador atenea = new Jugador("Atenea", 20, 40000);
+		Jugador angel = new Jugador("Ángel", 22, 1000000);
+		Jugador nestor = new Jugador();
+		nestor.setNombre("Néstor");
+		nestor.setEdad(-20);
+		nestor.setSueldo(-50000);
+		Jugador francisco = new Jugador(fran);
+		
+		// Meter jugadores en la lista
+		jugadores.add(fran);
+		jugadores.add(david);
+		jugadores.add(barbara);
+		jugadores.add(camila);
+		jugadores.add(joseLuis);
+		jugadores.add(enrique);
+		jugadores.add(atenea);
+		jugadores.add(angel);
+		jugadores.add(nestor);		
+		jugadores.add(francisco);
+		jugadores.add(new Jugador("Naomi",20,80000));
+		
+		// Imprmir todos los jugadores
+		jugadores.forEach(e->System.out.println(e));
+		// Filtra e imprime:
+		System.out.println("Jugadores que ganan más de 60000 euros");
+		jugadores.stream()
+			.filter(e->e.getSueldo()>60000)
+			.forEach(e->System.out.println(e));
+		// Filtra e imprime:
+		System.out.println("Jugadores que ganan entre 50000 y 70000 euros y su nombre tenga más de 5 letras");
+		jugadores.stream()
+			.filter(e->e.getSueldo()>=50000 && e.getSueldo()<=70000)
+			.filter(e->e.getNombre().length()>5)
+			.forEach(e->System.out.println(e));
+		// Filtra e imprime:
+		System.out.println("Jugadores que tengan una 'N' en su nombre");
+		jugadores.stream()
+			.filter(e->e.getNombre().toLowerCase().contains("n"))
+			.forEach(e->System.out.println(e));
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		//ejemplosCoches();
+		//ejercicio1();
+		ejemploListaJugadores();
+		
+	}
+
+}
