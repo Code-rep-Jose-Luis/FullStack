@@ -85,11 +85,39 @@ public static void ejemploListaJugadores() {
 		
 		
 	}
+
+	public static void ejemploEquipo() {
+		Equipo barsa = new Equipo(); // Creo el equipo
+		barsa.setNombre("F.C. Barcelona");
+		barsa.setPresupuesto(400000000);
+		Estadio campNou=new Estadio();
+		campNou.setNombre("Spotify Camp Nou"); // Creo el estadio
+		campNou.setCapacidad(100000);
+		barsa.setEstadio(campNou);
+		List<Jugador> jugadoresBarsa=new ArrayList<Jugador>(); // Creo la lista de jugadores
+		jugadoresBarsa.add(new Jugador("Fran",45,100000));
+		jugadoresBarsa.add(new Jugador("Paco",70,200000));
+		jugadoresBarsa.add(new Jugador("Dani",42,300000));
+		jugadoresBarsa.add(new Jugador("Consu",39,400000));
+		barsa.setJugadores(jugadoresBarsa);
+		System.out.println("Mostrar equipo:");
+		System.out.println(barsa);
+		
+		Equipo madrid=new Equipo(barsa);
+		System.out.println("Mostrar equipos:");
+		madrid.getEstadio().setNombre("Nuevo estadio");
+		barsa.getJugadores().get(0).setNombre("Pedro");
+		System.out.println(barsa);
+		System.out.println(madrid);
+		
+		
+	}
 	
 	public static void main(String[] args) {
 		//ejemplosCoches();
 		//ejercicio1();
-		ejemploListaJugadores();
+		//ejemploListaJugadores();
+		ejemploEquipo();
 		
 	}
 
