@@ -163,7 +163,9 @@ public class Estructuras {
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Repeticion numero " + (i + 1));
 		}
+	
 	}
+	
 
 	public static void main(String[] args) {
 
