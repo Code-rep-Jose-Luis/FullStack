@@ -7,14 +7,26 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class App {
+import com.jose.ejercicioBancos.entidades.Cuenta;
+import com.jose.ejercicioBancos.entidades.CuentaCaixa;
+import com.jose.ejercicioBancos.entidades.CuentaSabadell;
+import com.jose.ejercicioBancos.entidades.CuentaSantander;
+import com.jose.ejercicioBancos.entidades.Cuentas;
+import com.jose.ejercicioBancos.entidades.Oferta;
+import com.jose.ejercicioBancos.entidades.Ofertas;
 
+public class App {
+	
+	private static Scanner sc;
+	
 	/**
 	 * Funcion que devuelve todas las lineas de un archivo en filas
 	 * 
@@ -42,10 +54,9 @@ public class App {
 		List<Cuenta> cuentas = new ArrayList<>();
 		for (String s : datosDevueltos) {
 			String[] datos = s.split(";");
-			Cuenta c = new CuentaCaixa(datos[0], datos[1],
+			cuentas.add(new CuentaCaixa(datos[0], datos[1],
 					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4]));
-			cuentas.add(c);
+					Double.parseDouble(datos[4])));
 		}
 		return cuentas;
 	}
@@ -60,10 +71,9 @@ public class App {
 		List<Cuenta> cuentas = new ArrayList<>();
 		for (String s : datosDevueltos) {
 			String[] datos = s.split(";");
-			Cuenta c = new CuentaSabadell(datos[0], datos[1],
+			cuentas.add(new CuentaSabadell(datos[0], datos[1],
 					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4]));
-			cuentas.add(c);
+					Double.parseDouble(datos[4])));
 		}
 		return cuentas;
 	}
@@ -78,10 +88,9 @@ public class App {
 		List<Cuenta> cuentas = new ArrayList<>();
 		for (String s : datosDevueltos) {
 			String[] datos = s.split(";");
-			Cuenta c = new CuentaSantander(datos[0], datos[1],
+			cuentas.add(new CuentaSantander(datos[0], datos[1],
 					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4]));
-			cuentas.add(c);
+					Double.parseDouble(datos[4])));
 		}
 		return cuentas;
 	}
@@ -109,9 +118,10 @@ public class App {
 	 */
 	public static Cuentas devolverCliente(Cuentas cuentas) {
 		Cuentas cuentasCliente = new Cuentas();
-		Scanner sc = new Scanner(System.in);
+		
 		ArrayList<String> dni = new ArrayList<>();
 		dni.add("");
+		String cadena="";
 		do {
 			System.out.println("Introduce el dni de una cuenta existente: ");
 			dni.set(0, sc.nextLine());
@@ -119,7 +129,7 @@ public class App {
 					.addCuentas(cuentas.getCuentas().stream().filter(e -> e.getDni().equals(dni.get(0))).toList());
 		} while (cuentasCliente.getCuentas().size() == 0);
 
-		sc.close();
+		
 		return cuentasCliente;
 	}
 
@@ -160,28 +170,59 @@ public class App {
 	public static LocalDate fechaNacimiento(Cuentas cliente) {
 		List<Cuenta> clientesFecha=cliente.getCuentas().stream().distinct().toList();
 		LocalDate fecha=clientesFecha.get(0).getfechaNacimiento();
-		if (clientesFecha.size()>0) {
+		if (clientesFecha.size()>1) {
 			System.out.println("Elige la fecha de nacimiento correcta");
 			for (int i = 0; i < clientesFecha.size(); i++) {
 				System.out.println((i+1)+". "+clientesFecha.get(i).getfechaNacimiento());
 			}
-			Scanner sc =new Scanner(System.in);
 			int eleccion=0;
-			sc.nextLine();
 			while (eleccion<1 || eleccion>clientesFecha.size()){
+				System.out.println("Introduce opcion: ");
 				eleccion=Integer.parseInt(sc.nextLine());
 			}
-			sc.close();
+			
+			fecha=clientesFecha.get(eleccion-1).getfechaNacimiento();
 		}
 		
 		return fecha;
 	}
 
-	public static void main(String[] args) {
-		Cuentas cuentas = devolverCuentas();
-
-		Cuentas cuentasCliente = devolverCliente(cuentas);
-
+	
+	/**
+	 * Funcion para añadir una Cuenta de CuentaSantander a una lista en Cuentas
+	 * 
+	 * @param datosDevueltos
+	 * @return
+	 */
+	public static List<Oferta> devolverOfertas(List<String> datosDevueltos) {
+		List<Oferta> ofertas = new ArrayList<>();
+		for (String s : datosDevueltos) {
+			String[] datos = s.split(";");
+			ofertas.add(new Oferta(Integer.parseInt(datos[0]),Integer.parseInt(datos[1]),
+					Double.parseDouble(datos[2]),Double.parseDouble(datos[3]),
+					datos[4]));
+		}
+		return ofertas;
+	}
+	/**
+	 * Funcion que devuelve la oferta que este en el rango de edad y saldo, devolviendo la que mayor saldo minimo tenga
+	 * @param fechaNacimiento
+	 * @param cuentasCliente
+	 * @return
+	 */
+	public static Oferta obtenerOferta(LocalDate fechaNacimiento, Cuentas cuentasCliente) {
+		Ofertas ofertas=new Ofertas(devolverOfertas(devolverLineasJava8(Paths.get("archivos", "productosofertados.txt"))));
+		double saldoCuentas=cuentasCliente.getCuentas().stream().mapToDouble(e->e.getSaldo()).sum();
+		int edad=Period.between(fechaNacimiento, LocalDate.now()).getYears();
+		List<Oferta> oferta=ofertas.getOferta(edad, saldoCuentas);
+		return oferta.stream().max(Comparator.comparingDouble(Oferta::getSaldoMin)).orElseThrow();
+		
+	}
+	/**
+	 * Funcion que llama a los mensajes segun la el pais del cliente
+	 * @param cuentasCliente
+	 */
+	public static void mensajes(Cuentas cuentasCliente) {
 		if (cuentasCliente.getCuentas().get(0).getcodigoPais().equalsIgnoreCase("ES")) {
 			mensajeEs(cuentasCliente.getCuentas().get(0));
 			fechaEs();
@@ -189,16 +230,33 @@ public class App {
 			mensajeEx(cuentasCliente.getCuentas().get(0));
 			fechaEx();
 		}
-
-		LocalDate fechaNacimiento=fechaNacimiento(cuentasCliente);
 		
-		
-		System.out.println(fechaNacimiento);
-		//System.out.println(cuentasCliente);
-		//System.out.println(cuentasCliente.getCuentas().stream().distinct().toList());
-		
-		// datosDevueltos=devolverLineasJava8(Paths.get("alumnos.txt"));
-
 	}
+	/**
+	 * Funcion que llama a los mensajes segun la el pais del cliente y muestra la oferta
+	 * @param cuentasCliente
+	 */
+	public static void mensajes(Cuentas cuentasCliente,Oferta oferta) {
+		if (cuentasCliente.getCuentas().get(0).getcodigoPais().equalsIgnoreCase("ES")) {
+			mensajeEs(cuentasCliente.getCuentas().get(0));
+			fechaEs();
+		} else {
+			mensajeEx(cuentasCliente.getCuentas().get(0));
+			fechaEx();
+		}
+		System.out.println(oferta.getNombre());
+		
+	}
+	
+	public static void main(String[] args) {
+		sc = new Scanner(System.in);
+		Cuentas cuentas = devolverCuentas();
+		Cuentas cuentasCliente = devolverCliente(cuentas);
+		Oferta oferta=obtenerOferta(fechaNacimiento(cuentasCliente),cuentasCliente);
+		mensajes(cuentasCliente,oferta);
+		sc.close();
+	}
+
+
 
 }

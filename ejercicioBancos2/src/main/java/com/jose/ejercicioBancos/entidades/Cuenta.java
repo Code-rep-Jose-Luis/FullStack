@@ -1,14 +1,14 @@
-package com.jose.ejercicioBancos;
+package com.jose.ejercicioBancos.entidades;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Cuenta {
-	String dni;
-	String nombre;
-	LocalDate fechaNacimiento;
-	String codigoPais;
-	double saldo;
+	protected String dni;
+	protected String nombre;
+	protected LocalDate fechaNacimiento;
+	protected String codigoPais;
+	protected double saldo;
 	
 	public Cuenta() {
 		
@@ -79,23 +79,9 @@ public abstract class Cuenta {
 				+ ", saldo=" + saldo + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(fechaNacimiento);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		Cuenta other = (Cuenta) obj;
-		return Objects.equals(fechaNacimiento, other.fechaNacimiento);
-	}
 
 	
-	/*
+	
 	 
 	@Override
 	public int hashCode() {
@@ -114,7 +100,7 @@ public abstract class Cuenta {
 		return Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre);
 	}
 	
-	*/
+	
 	
 	
 	
