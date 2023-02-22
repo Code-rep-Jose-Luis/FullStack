@@ -113,12 +113,35 @@ public static void ejemploListaJugadores() {
 		
 	}
 	
+	public static void ejercicio4() {
+		Equipo equipo = new Equipo();
+		equipo.addJugador(new Jugador("Fran",20,30000));
+		equipo.addJugador(new Jugador("Pepe",30,20000));
+		equipo.addJugador(new Jugador("Alberto",25,60000));
+		equipo.addJugador(new Jugador("Juan",32,80000));
+		equipo.deleteJugador(0);
+		//equipo.getJugadores().forEach(e->System.out.println(e));
+		for(int i=0;i<equipo.getNumJugadores();i++) {
+			System.out.println(equipo.getJugador(i));
+		}
+		System.out.println(equipo.totalSueldos3());
+	}
+	
+	public static void herenciaEjercicio01(){
+		Tienda t =new Tienda();
+		t.bienvenida();
+		TiendaLicores tl=new TiendaLicores();
+		tl.bienvenida();
+		
+	}
+	
 	public static void main(String[] args) {
 		//ejemplosCoches();
 		//ejercicio1();
 		//ejemploListaJugadores();
-		ejemploEquipo();
-		
+		//ejemploEquipo();
+		//ejercicio4();
+		herenciaEjercicio01();
 	}
 
 }

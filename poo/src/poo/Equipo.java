@@ -98,6 +98,54 @@ public class Equipo {
 		return Objects.equals(nombre, other.nombre);
 	}
 	
+	public boolean addJugador(Jugador jugador) {
+		try {
+			jugadores.add(jugador);	
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	
+	public Jugador getJugador(int posicion) {
+		try {
+			return jugadores.get(posicion);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+		
+	public int getNumJugadores() {
+		return jugadores.size();
+	}
+	
+	public boolean deleteJugador(int posicion) {
+		try {
+			jugadores.remove(posicion);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public double totalSueldos() {
+		double sueldoTotal=0;
+		for(Jugador jugador:jugadores) {
+			sueldoTotal+=jugador.getEdad();
+		}
+		return sueldoTotal;
+	}
+	public double totalSueldos2() {
+		
+		double[] sueldoTotal=new double[1];
+		jugadores.forEach(e->sueldoTotal[0]+=e.getSueldo());
+		return sueldoTotal[0];
+	}
+	public double totalSueldos3() {
+		return jugadores.stream().mapToDouble(e->e.getSueldo()).sum();
+	}
+
+	
+		
 	
 }
