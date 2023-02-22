@@ -3,7 +3,7 @@ package com.jose.ejercicioBancos.entidades;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class Cuenta {
+public class Cuenta {
 	String dni;
 	String nombre;
 	LocalDate fechaNacimiento;

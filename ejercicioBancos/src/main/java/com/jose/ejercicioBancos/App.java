@@ -16,9 +16,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import com.jose.ejercicioBancos.entidades.Cuenta;
-import com.jose.ejercicioBancos.entidades.CuentaCaixa;
-import com.jose.ejercicioBancos.entidades.CuentaSabadell;
-import com.jose.ejercicioBancos.entidades.CuentaSantander;
 import com.jose.ejercicioBancos.entidades.Cuentas;
 import com.jose.ejercicioBancos.entidades.Oferta;
 import com.jose.ejercicioBancos.entidades.Ofertas;
@@ -44,53 +41,18 @@ public class App {
 	}
 
 	/**
-	 * Funcion para añadir una Cuenta de CuentaCaixa a una lista en Cuentas
+	 * Funcion para añadir una Cuenta a una lista en Cuentas
 	 * 
 	 * @param datosDevueltos
 	 * @return
 	 */
-
-	public static List<Cuenta> devolverListaCuentasCaixa(List<String> datosDevueltos) {
+	public static List<Cuenta> devolverListaCuentas(List<String> datosDevueltos) {
 		List<Cuenta> cuentas = new ArrayList<>();
 		for (String s : datosDevueltos) {
 			String[] datos = s.split(";");
-			cuentas.add(new CuentaCaixa(datos[0], datos[1],
-					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4])));
-		}
-		return cuentas;
-	}
-
-	/**
-	 * Funcion para añadir una Cuenta de CuentaSabadell a una lista en Cuentas
-	 * 
-	 * @param datosDevueltos
-	 * @return
-	 */
-	public static List<Cuenta> devolverListaCuentasSabadell(List<String> datosDevueltos) {
-		List<Cuenta> cuentas = new ArrayList<>();
-		for (String s : datosDevueltos) {
-			String[] datos = s.split(";");
-			cuentas.add(new CuentaSabadell(datos[0], datos[1],
-					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4])));
-		}
-		return cuentas;
-	}
-
-	/**
-	 * Funcion para añadir una Cuenta de CuentaSantander a una lista en Cuentas
-	 * 
-	 * @param datosDevueltos
-	 * @return
-	 */
-	public static List<Cuenta> devolverListaCuentasSantander(List<String> datosDevueltos) {
-		List<Cuenta> cuentas = new ArrayList<>();
-		for (String s : datosDevueltos) {
-			String[] datos = s.split(";");
-			cuentas.add(new CuentaSantander(datos[0], datos[1],
-					LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")), datos[3],
-					Double.parseDouble(datos[4])));
+			cuentas.add(
+					new Cuenta(datos[0], datos[1], LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+							datos[3], Double.parseDouble(datos[4])));
 		}
 		return cuentas;
 	}
@@ -103,9 +65,9 @@ public class App {
 	 */
 	public static Cuentas devolverCuentas() {
 		Cuentas cuentas = new Cuentas();
-		cuentas.addCuentas(devolverListaCuentasCaixa(devolverLineasJava8(Paths.get("archivos", "caixa.txt"))));
-		cuentas.addCuentas(devolverListaCuentasSabadell(devolverLineasJava8(Paths.get("archivos", "sabadell.txt"))));
-		cuentas.addCuentas(devolverListaCuentasSantander(devolverLineasJava8(Paths.get("archivos", "santander.txt"))));
+		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "caixa.txt"))));
+		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "sabadell.txt"))));
+		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "santander.txt"))));
 		return cuentas;
 	}
 
@@ -118,7 +80,6 @@ public class App {
 	 */
 	public static Cuentas devolverCliente(Cuentas cuentas) {
 		Cuentas cuentasCliente = new Cuentas();
-
 		ArrayList<String> dni = new ArrayList<>();
 		dni.add("");
 		String cadena = "";
@@ -128,7 +89,6 @@ public class App {
 			cuentasCliente
 					.addCuentas(cuentas.getCuentas().stream().filter(e -> e.getDni().equals(dni.get(0))).toList());
 		} while (cuentasCliente.getCuentas().size() == 0);
-
 		return cuentasCliente;
 	}
 
@@ -179,10 +139,8 @@ public class App {
 				System.out.println("Introduce opcion: ");
 				eleccion = Integer.parseInt(sc.nextLine());
 			}
-
 			fecha = clientesFecha.get(eleccion - 1).getfechaNacimiento();
 		}
-
 		return fecha;
 	}
 
@@ -234,8 +192,7 @@ public class App {
 			mensajeEx(cuentasCliente.getCuentas().get(0));
 			fechaEx();
 		}
-		System.out.println(oferta.getNombre());
-
+		System.out.println(oferta.getNombre().trim());
 	}
 
 	public static void main(String[] args) {
