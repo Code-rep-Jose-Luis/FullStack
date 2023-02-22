@@ -1,0 +1,7 @@
+1;99;1;1000000;Tarjeta estándar
+18;35;10000;40000;Tarjeta Joven
+20;40;25000;100000;Tarjeta Acomodado
+1;99;-500000;0; Tarjeta Necesidad
+25;65;0;300000; Tarjeta adulto estándar
+45;99;20000;1000000;Tarjeta Senior
+55;99;100000;1000000;Tarjeta Senior Plus
