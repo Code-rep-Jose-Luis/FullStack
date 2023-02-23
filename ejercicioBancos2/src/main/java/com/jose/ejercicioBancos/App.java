@@ -32,6 +32,26 @@ public class App {
 	 * @return
 	 */
 
+	public static List<Cuenta> devolverLista1(String cadena) {
+		List<String> datosDevueltos=FicherosUtils.devolverLineasJava8(Paths.get("archivos", cadena));
+		List<Cuenta> cuentas = new ArrayList<>();
+		for (String s : datosDevueltos) {
+			String[] datos = s.split(";");
+			switch (cadena){
+				case "caixa.txt"->cuentas.add(new CuentaCaixa(datos[0], datos[1],
+						LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+						datos[3], Double.parseDouble(datos[4]),nivelCatalan()));
+				case "sabadell.txt"->cuentas.add(new CuentaSabadell(datos[0], datos[1],
+						LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+						datos[3], Double.parseDouble(datos[4]),nivelCatalan()));
+				case "santander.txt"->cuentas.add(new CuentaSantander(datos[0], datos[1],
+						LocalDate.parse(datos[2], DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+						datos[3], Double.parseDouble(datos[4]),isResident()));
+			}
+		}
+		return cuentas;
+	}
+	
 	public static List<Cuenta> devolverListaCuentasCaixa(List<String> datosDevueltos) {
 		List<Cuenta> cuentas = new ArrayList<>();
 		for (String s : datosDevueltos) {
@@ -88,9 +108,9 @@ public class App {
 	 */
 	public static Cuentas devolverCuentas() {
 		Cuentas cuentas = new Cuentas();
-		cuentas.addCuentas(devolverListaCuentasCaixa(FicherosUtils.devolverLineasJava8(Paths.get("archivos", "caixa.txt"))));
-		cuentas.addCuentas(devolverListaCuentasSabadell(FicherosUtils.devolverLineasJava8(Paths.get("archivos", "sabadell.txt"))));
-		cuentas.addCuentas(devolverListaCuentasSantander(FicherosUtils.devolverLineasJava8(Paths.get("archivos", "santander.txt"))));
+		cuentas.addCuentas(devolverLista1("caixa.txt"));
+		cuentas.addCuentas(devolverLista1("sabadell.txt"));
+		cuentas.addCuentas(devolverLista1("santander.txt"));
 		return cuentas;
 	}
 

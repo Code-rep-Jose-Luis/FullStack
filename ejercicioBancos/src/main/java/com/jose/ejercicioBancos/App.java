@@ -65,6 +65,7 @@ public class App {
 	 */
 	public static Cuentas devolverCuentas() {
 		Cuentas cuentas = new Cuentas();
+		List
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "caixa.txt"))));
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "sabadell.txt"))));
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "santander.txt"))));
@@ -93,38 +94,10 @@ public class App {
 	}
 
 	/**
-	 * Funcion que muestra un saludo al cliente en español
-	 * 
+	 * Funcion que pregunta la fecha de nacimiento correcta si hay mas de 1
 	 * @param cliente
+	 * @return
 	 */
-	public static void mensajeEs(Cuenta cliente) {
-		System.out.println("Hola " + cliente.getNombre());
-	}
-
-	/**
-	 * Funcion que muestra un saludo al cliente en ingles
-	 * 
-	 * @param cliente
-	 */
-	public static void mensajeEx(Cuenta cliente) {
-		System.out.println("Hello " + cliente.getNombre());
-	}
-
-	/**
-	 * Funcion que puestra la fecha en formato español
-	 */
-	public static void fechaEs() {
-		System.out.println(LocalDateTime.now()
-				.format(DateTimeFormatter.ofPattern("'Hoy es' eeee dd 'de' MMMM 'de' yyyy\n'Hora: 'HH:mm:ss")));
-	}
-
-	/**
-	 * Funcion que muestra la fecha en formato ingles
-	 */
-	public static void fechaEx() {
-		System.out.println(LocalDateTime.now()
-				.format(DateTimeFormatter.ofPattern("'Date: 'eeee',' MMMM dd',' yyyy\n'Time: 'HH:mm:ss", Locale.UK)));
-	}
 
 	public static LocalDate fechaNacimiento(Cuentas cliente) {
 		List<Cuenta> clientesFecha = cliente.getCuentas().stream().distinct().toList();
@@ -174,7 +147,8 @@ public class App {
 		double saldoCuentas = cuentasCliente.getCuentas().stream().mapToDouble(e -> e.getSaldo()).sum();
 		int edad = Period.between(fechaNacimiento, LocalDate.now()).getYears();
 		List<Oferta> oferta = ofertas.getOferta(edad, saldoCuentas);
-		return oferta.stream().max(Comparator.comparingDouble(Oferta::getSaldoMin)).orElseThrow();
+		
+		return oferta.stream().max(Comparator.comparingDouble(Oferta::getSaldoMin)).orElse(ofertas.getOfertas().get(0));
 
 	}
 
@@ -185,13 +159,10 @@ public class App {
 	 * @param cuentasCliente
 	 */
 	public static void mensajes(Cuentas cuentasCliente, Oferta oferta) {
-		if (cuentasCliente.getCuentas().get(0).getcodigoPais().equalsIgnoreCase("ES")) {
-			mensajeEs(cuentasCliente.getCuentas().get(0));
-			fechaEs();
-		} else {
-			mensajeEx(cuentasCliente.getCuentas().get(0));
-			fechaEx();
-		}
+		Cuenta cliente=cuentasCliente.getCuentas().get(0);
+		System.out.println(((cliente.getcodigoPais().equals("ES"))?"Hola ":"Hello ") + cliente.getNombre());
+		System.out.println(LocalDateTime.now()
+				.format((cliente.getcodigoPais().equals("ES"))?DateTimeFormatter.ofPattern("'Hoy es' eeee dd 'de' MMMM 'de' yyyy\n'Hora: 'HH:mm:ss"):DateTimeFormatter.ofPattern("'Date: 'eeee',' MMMM dd',' yyyy\n'Time: 'HH:mm:ss", Locale.UK)));
 		System.out.println(oferta.getNombre().trim());
 	}
 
