@@ -65,7 +65,6 @@ public class App {
 	 */
 	public static Cuentas devolverCuentas() {
 		Cuentas cuentas = new Cuentas();
-		List
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "caixa.txt"))));
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "sabadell.txt"))));
 		cuentas.addCuentas(devolverListaCuentas(devolverLineasJava8(Paths.get("archivos", "santander.txt"))));
