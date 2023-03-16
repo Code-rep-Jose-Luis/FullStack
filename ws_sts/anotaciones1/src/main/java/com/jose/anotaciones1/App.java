@@ -1,4 +1,4 @@
-package com.jose.BibliotecaH2;
+package com.jose.anotaciones1;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.jose.BibliotecaH2.entidades.Autores;
-import com.jose.BibliotecaH2.entidades.Libros;
+import com.jose.anotaciones1.entidades.Autores;
+import com.jose.anotaciones1.entidades.Libros;
 
 /**
  * Hello world!
@@ -16,7 +16,6 @@ import com.jose.BibliotecaH2.entidades.Libros;
  */
 public class App 
 {
-	
 	static SessionFactory sessionFactory;
 	static Session session;
 	public static boolean openSession() {
@@ -38,9 +37,10 @@ public class App
 		List<Libros> libros=session.createSelectionQuery("from Libros",Libros.class).list();
 		libros.forEach(e->System.out.println(e.getId()+" "+e.getAutores().getNombre()));
 	}
+	
 	public static void mostrarAutoes() {
 		List<Autores> autores=session.createSelectionQuery("from Autores",Autores.class).list();
-		autores.forEach(e->System.out.println(e.getCod()+" "+e.getNombre()+" "+e.hashCode()+" "+e.mostrarLibros()));
+		autores.forEach(e->System.out.println(e.getCod()+" "+e.getNombre()+" "+e.hashCode()));
 	}
 	
 	public static void anyadirAutor(Autores autor) {
@@ -75,15 +75,10 @@ public class App
 	
     public static void main( String[] args )
     {
-    	java.util.logging.Logger.getLogger("org.hibernate").setLevel(java.util.logging.Level.SEVERE);
-    	if(openSession()) {
-    		//anyadirAutor(new Autores("BBBBB","Autor de prueba", new HashSet<Libros>(0)));
-    		//anyadirLibro(new Libros(3,new Autores("AAAAA","Autor de prueba", new HashSet<Libros>(0)),"nombre de un libro"));
-    		mostrarLibros();
-    		mostrarAutoes();
-    		//updateAutor("Autor de prueba","Autor actualizado");
-    		deleteAutor("BBBBB");
-    		closeSession();
-    	}
+        if (openSession()) {
+			System.out.println("conectado");
+			mostrarLibros();
+			closeSession();
+		}
     }
 }
