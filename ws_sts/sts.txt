@@ -1,0 +1,12 @@
+lombok
+jboss
+
+hibernate => // ORM // JPA
+	new hibernate
+		Biblioteca1/src/main/java
+
+org.gjt.mm.mysql.Driver
+
+com.mysql.jdbc.Driver
+
+create new hibernate
