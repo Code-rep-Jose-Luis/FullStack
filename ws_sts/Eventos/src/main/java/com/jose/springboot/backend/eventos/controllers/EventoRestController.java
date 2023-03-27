@@ -155,7 +155,7 @@ public class EventoRestController {
 
 		try {
 			nuevo = eventoService.save(evento);
-			if(evento.getImagen()!=null)
+			if(evento.getImagen()!=null && evento.getImagen().trim()!="")
 				nuevo.setImagen(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/" + nuevo.getImagen());
 		} catch (DataAccessException e) { // Error al acceder a la base de datos
 			response.put("mensaje", "Error al conectar con la base de datos");
@@ -209,7 +209,7 @@ public class EventoRestController {
 			if(evento.getImagen()!=null)
 				eventoActual.setImagen(evento.getImagen());
 			eventoUpdated = eventoService.save(eventoActual);
-			if(evento.getImagen()!=null)
+			if(evento.getImagen()!=null && evento.getImagen().trim()!="")
 				eventoUpdated.setImagen(ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString() + "/" + eventoUpdated.getImagen());
 		} catch (DataAccessException e) { // Error al acceder a la base de datos
 			response.put("mensaje", "Error al conectar con la base de datos");
