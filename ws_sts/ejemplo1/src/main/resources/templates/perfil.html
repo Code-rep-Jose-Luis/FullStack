@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmls:th="http://thyleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+	<span th:text="${usuario.getNombre()}"></span>
+	<span th:text="${usuario.getApellidos()}"></span>
+	<span th:text="${usuario.getEmail()}"></span>
+	<br>
+	<span th:if="${usuario.getEmail()}!=null">Tiene correo</span>
+	<span th:if="${usuario.getEmail()}==null">No tiene correo</span>
+	
+</body>
+</html>
